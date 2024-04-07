@@ -46,3 +46,34 @@ npx prisma init --datasource-provider sqlite
 ```bash
 npx prisma migrate dev
 ```
+
+## When Making Nextjs applications
+
+- Recommends to Identify all the different routes you want your app to have and the data that each shows
+
+- Make path helper functions
+
+```javaScript
+const paths = {
+    homePage() {
+        return '/'
+    },
+    topicShowPath(slug: string) {
+        return `/content/topics/${slug}`
+    },
+    postCreatePath(slug: string) {
+        return `/content/topics/${slug}/posts/new`
+    },
+    postShowPath(slug: string, postId: string) {
+        return `/content/topics/${slug}/posts/${postId}`
+    }
+}
+```
+
+- Create your routing folders + pagetsx files based on step 1
+
+- Identify the places where data changes in your app
+
+- Make empty server actions for each of those
+
+- Add in comments on what paths you'll need to revalidate for each server action
